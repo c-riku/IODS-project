@@ -1,7 +1,7 @@
 
 # About the project
 
-##Introduction to Open Data Science 2018
+## Introduction to Open Data Science 2018
 
 This is a nice course that will teach me better data tools, and makes me more used to GitHub and Git.
 
