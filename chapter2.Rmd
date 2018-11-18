@@ -1,6 +1,6 @@
 # Regression Analysis - week 2
 
-*I have learned how to organize datasets from R, visualize data, check relationships between variables, apply linear regression, interpret its output and conduct model validation using graphs*
+*I have learned how to organize datasets from R, visualize data, check relationships between variables, apply linear regression, interpret its output and conduct model validation using graphs.*
 
 ## Tools: learning2014 dataset
 ```{r}

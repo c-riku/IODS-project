@@ -177,7 +177,7 @@ $(document).ready(function () {
 </div>
 <div id="regression-analysis---week-2" class="section level1">
 <h1>Regression Analysis - week 2</h1>
-<p><em>I have learned how to organize datasets from R, visualize data, check relationships between variables, apply linear regression, interpret its output and conduct model validation using graphs</em></p>
+<p><em>I have learned how to organize datasets from R, visualize data, check relationships between variables, apply linear regression, interpret its output and conduct model validation using graphs.</em></p>
 <div id="tools-learning2014-dataset" class="section level2">
 <h2>Tools: learning2014 dataset</h2>
 <pre class="r"><code>setwd(&quot;D:/New folder/OneDrive for Business 1/Git/IODS/IODS-project/data&quot;)
@@ -279,7 +279,7 @@ plot(my_model2, which =c(1,2,5))</code></pre>
 </div>
 <div id="logistic-analysis---week-3" class="section level1">
 <h1>Logistic Analysis - week 3</h1>
-<p><em>I have learned how to organize datasets from R, visualize data, check relationships between variables, apply linear regression, interpret its output and conduct model validation using graphs</em></p>
+<p><em>I have learned how to merge datasets from R, apply logistic regression, interpret its output, predict power of the model and conduct cross-validation.</em></p>
 <div id="task-2" class="section level2">
 <h2>Task 2</h2>
 <pre class="r"><code>setwd(&quot;D:/New folder/OneDrive for Business 1/Git/IODS/IODS-project/data&quot;)
@@ -536,7 +536,7 @@ alc &lt;- mutate(alc, prediction=probability&gt;0.5)</code></pre>
 <pre class="r"><code>library(boot)
 cv1 &lt;- cv.glm(data = alc, cost = loss_func, glmfit = m1, K = 10)
 cv1$delta[1]</code></pre>
-<pre><code>## [1] 0.3089005</code></pre>
+<pre><code>## [1] 0.3010471</code></pre>
 <p>My model does not provide a smaller prediction error than DataCamp model.</p>
 <pre class="r"><code>m3 &lt;- glm(high_use ~sex*absences, data = alc, family = &quot;binomial&quot;)
 summary(m3)</code></pre>
@@ -567,7 +567,7 @@ summary(m3)</code></pre>
 ## Number of Fisher Scoring iterations: 4</code></pre>
 <pre class="r"><code>cv3 &lt;- cv.glm(data = alc, cost = loss_func, glmfit = m3, K = 10)
 cv3$delta[1]</code></pre>
-<pre><code>## [1] 0.2565445</code></pre>
+<pre><code>## [1] 0.2539267</code></pre>
 <p>A model with an interaction between absences and sex provides smaller prediction error.</p>
 <hr />
 </div>

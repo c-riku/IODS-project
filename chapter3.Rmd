@@ -1,6 +1,6 @@
 # Logistic Analysis - week 3
 
-*I have learned how to organize datasets from R, visualize data, check relationships between variables, apply linear regression, interpret its output and conduct model validation using graphs*
+*I have learned how to merge datasets from R, apply logistic regression, interpret its output, predict power of the model and conduct cross-validation.*
 
 
 
