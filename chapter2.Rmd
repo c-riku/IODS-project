@@ -1,4 +1,4 @@
-# Analysis - week 2
+# Regression Analysis - week 2
 
 *I have learned how to organize datasets from R, visualize data, check relationships between variables, apply linear regression, interpret its output and conduct model validation using graphs*
 
@@ -27,10 +27,10 @@ library(ggplot2)
 
 Relationships
 
-- Gender is unbalaned, more males were sampled. 
+- Gender is unbalaned, more females were sampled. 
 - The age of male respondents has wider range.
 - Possible linear relationship between points and attitude.
-- Possible exponential relatonship between points and stra.
+- Possible non linear relatonship between points and stra.
 - Points seem to vary with gender.
 - Maybe attitude and stra are collinear with gender.
 
@@ -64,8 +64,8 @@ par(mfrow = c(2,2))
 plot(my_model2, which =c(1,2,5))
 ```
 
-- Normality of the errors - There's deviation from the line, making errors not normally distributed.
-- Constant varaince of errors - size of residuals decreases towards the end when fitted values increase.
+- Normality of the errors - There's deviation from the line, making errors not entirely normally distributed.
+- Constant varaince of errors - size of residuals slightly decreases towards the end as fitted values increase.
 - Leverage - A couple of observations stand out from the rest (71, 35).
 
 
