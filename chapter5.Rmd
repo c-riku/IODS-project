@@ -1,0 +1,124 @@
+# Dimensionality reduction techniques - week 5
+
+## Task 1
+
+```{r}
+setwd("D:/New folder/OneDrive for Business 1/Git/IODS/IODS-project/data")
+human <- read.table(file = "human.txt",
+                    header = TRUE,
+                    dec = ".")
+```
+
+```{r}
+# Libraries
+library(GGally)
+library(corrplot)
+library(FactoMineR)
+library(tidyr)
+library(dplyr)
+```
+
+
+```{r}
+# Overview of data
+summary(human)
+str(human)
+
+ggpairs(human)
+cor(human)%>%corrplot()
+
+Several variables strongly correlate to each other.
+```
+
+## Task 2
+
+
+```{r}
+# PCA on raw data 
+pca_human_raw <- prcomp(human, scale = FALSE)
+pca_human_raw
+```
+
+Among all variables, GNI had a stronger correlation with PC1. Since the variables weren't standardized, the magnitude and range of some variables, especially of GNI, was much greater, so the PCA gave more emphasis to GNI.
+
+```{r}
+s <- summary(pca_human_raw)
+s
+```
+
+PC1 explains 100% of the total variance in the data.
+
+```{r}
+# Draw a biplot of the principal component representation and the original variables
+biplot(pca_human_raw)
+```
+
+## Task 3
+
+```{r}
+# PCA with standardized data
+pca_human_std <- prcomp(human, scale=TRUE)
+pca_human_std
+```
+
+Life expectancy at birth, Expected years of schooling, Proportion of females/males with at least secondary education, and Gross National Income per capita  show a strong and negative correlation with PC1, while Maternal mortality ratio and Adolescent birth rate showed a strong positive correlation with PC1. Percetange of female representatives in parliament and Proportion of females/males in the labour force showed a strong positive correlation with PC2.
+
+```{r}
+# Create and print out a summary of pca_human
+s <- summary(pca_human_std)
+s
+```
+
+```{r}
+# Assigning the proportion of variance as percent to each PC
+pca_pr <- round(100*s$importance[2, ], digits = 1)
+pc_lab<-paste0(names(pca_pr), " (", pca_pr, "%)")
+pc_lab
+```
+
+The PCA produced two components with eigenvalues (in units of standard deviation) above 1.0, which explained about 70% of the total variance among the eight original variables.
+
+```{r}
+# Draw a biplot of the principal component representation and the original variables
+biplot(pca_human_std, cex = c(0.8, 1), col = c("grey40", "deeppink2"), xlab = pc_lab[1], ylab = pc_lab[2])
+```
+
+## Task 4
+
+We can see that PC1 and PC1 explained 53.6% and 16.2% of the total variance, respectively. 
+PC1 represents Life expectancy at birth, Expected years of schooling, Proportion of females/males with at least secondary education, and Gross National Income per capita, that strongly correlates with each other, which negatively correlate with Maternal mortality ratio and Adolescent birth rate, that strongly correlate with each other. On the other hand, PC2 represents Percetange of female representatives in parliament and Proportion of females/males in the labour force, which are independent from the other variables in the data set. You can see they are orthogonally positioned on the biplot.
+
+## Task 5
+
+```{r}
+data("tea")
+dim(tea)
+str(tea)
+
+keep_columns <- c("Tea", "age", "How", "where", "friends", "breakfast")
+tea_time <- select(tea, one_of(keep_columns))
+summary(tea_time)
+gather(tea_time) %>% ggplot(aes(value)) + facet_wrap("key", scales = "free") +geom_bar()+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 8))
+
+mca <- MCA(tea_time, quanti.sup= 2, graph = FALSE)
+summary(mca)
+```
+
+Of all variables,"where" correlated more strongly with dimension 1 (but also with dimension 3), whereas "How" correlated more with dimension 2."Tea" type correlated with dimension 3. All variables were significant in dim 1.
+Chain store+tea shop was not significant for dim 2 nor for dim 3.
+Tea with milk was not significant for dim 3.
+
+```{r}
+dimdesc(mca)
+```
+
+Age is significantly correlated with dim 2 (p<0.05) and dim 3 (p<0.001).
+
+```{r}
+plot(mca, invisible=c("ind"),habillage = "quali")
+```
+
+
+
+
