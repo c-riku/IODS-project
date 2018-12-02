@@ -1,0 +1,41 @@
+
+## Task 5
+
+```{r}
+library(FactoMineR)
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+```
+
+
+
+```{r}
+data(tea)
+dim(tea)
+str(tea)
+
+tea_time <-tea%>% dplyr::select(Tea, age, How, where, friends, breakfast)
+
+summary(tea_time)
+gather(tea_time) %>% ggplot(aes(value)) + facet_wrap("key", scales = "free") +geom_bar()+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 8))
+
+mca <- MCA(tea_time, quanti.sup= 2, graph = FALSE)
+summary(mca)
+```
+
+Of all variables,"where" correlated more strongly with dimension 1 (but also with dimension 3), whereas "How" correlated more with dimension 2."Tea" type correlated with dimension 3. All variables were significant in dim 1.
+Chain store+tea shop was not significant for dim 2 nor for dim 3.
+Tea with milk was not significant for dim 3.
+
+```{r}
+dimdesc(mca)
+```
+
+Age is significantly correlated with dim 2 (p<0.05) and dim 3 (p<0.001).
+
+```{r}
+plot(mca, invisible=c("ind"),habillage = "quali")
+```
+

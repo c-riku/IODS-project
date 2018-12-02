@@ -64,12 +64,11 @@ biplot(pca_human_std, cex = c(0.8, 1), col = c("grey40", "deeppink2"), xlab = pc
 
 # MCA
 
-data("tea")
+data(tea)
 dim(tea)
 str(tea)
 
-keep_columns <- c("Tea", "age", "How", "where", "friends", "breakfast")
-tea_time <- select(tea, one_of(keep_columns))
+tea_time <-tea%>% select(Tea, age, How, where, friends, breakfast)
 summary(tea_time)
 gather(tea_time) %>% ggplot(aes(value)) + facet_wrap("key", scales = "free") +geom_bar()+
   theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 8))

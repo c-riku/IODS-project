@@ -14,8 +14,8 @@ human <- read.table(file = "human.txt",
 library(GGally)
 library(corrplot)
 library(FactoMineR)
-library(tidyr)
 library(dplyr)
+library(tidyr)
 ```
 
 
@@ -87,38 +87,6 @@ biplot(pca_human_std, cex = c(0.8, 1), col = c("grey40", "deeppink2"), xlab = pc
 
 We can see that PC1 and PC1 explained 53.6% and 16.2% of the total variance, respectively. 
 PC1 represents Life expectancy at birth, Expected years of schooling, Proportion of females/males with at least secondary education, and Gross National Income per capita, that strongly correlates with each other, which negatively correlate with Maternal mortality ratio and Adolescent birth rate, that strongly correlate with each other. On the other hand, PC2 represents Percetange of female representatives in parliament and Proportion of females/males in the labour force, which are independent from the other variables in the data set. You can see they are orthogonally positioned on the biplot.
-
-## Task 5
-
-```{r}
-data("tea")
-dim(tea)
-str(tea)
-
-keep_columns <- c("Tea", "age", "How", "where", "friends", "breakfast")
-tea_time <- select(tea, one_of(keep_columns))
-summary(tea_time)
-gather(tea_time) %>% ggplot(aes(value)) + facet_wrap("key", scales = "free") +geom_bar()+
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 8))
-
-mca <- MCA(tea_time, quanti.sup= 2, graph = FALSE)
-summary(mca)
-```
-
-Of all variables,"where" correlated more strongly with dimension 1 (but also with dimension 3), whereas "How" correlated more with dimension 2."Tea" type correlated with dimension 3. All variables were significant in dim 1.
-Chain store+tea shop was not significant for dim 2 nor for dim 3.
-Tea with milk was not significant for dim 3.
-
-```{r}
-dimdesc(mca)
-```
-
-Age is significantly correlated with dim 2 (p<0.05) and dim 3 (p<0.001).
-
-```{r}
-plot(mca, invisible=c("ind"),habillage = "quali")
-```
-
 
 
 
