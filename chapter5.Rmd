@@ -27,7 +27,7 @@ str(human)
 ggpairs(human)
 cor(human)%>%corrplot()
 
-Several variables strongly correlate to each other.
+#Several variables strongly correlate to each other.
 ```
 
 ## Task 2
