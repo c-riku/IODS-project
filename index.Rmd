@@ -42,3 +42,7 @@ output:
 ```{r child = "chapter5-2.Rmd"}
 ```
 
+***
+
+```{r child = "chapter6.Rmd"}
+```

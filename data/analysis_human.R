@@ -68,7 +68,7 @@ data(tea)
 dim(tea)
 str(tea)
 
-tea_time <-tea%>% select(Tea, age, How, where, friends, breakfast)
+tea_time <-tea%>% dplyr::select(Tea, age, How, where, friends, breakfast)
 summary(tea_time)
 gather(tea_time) %>% ggplot(aes(value)) + facet_wrap("key", scales = "free") +geom_bar()+
   theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 8))
