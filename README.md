@@ -1,4 +1,5 @@
+> **Completed coursework (2018).** This repository is kept as a record and is no longer updated.
 
-This is a nice course that will teach me better data tools, and makes me more used to GitHub and Git.
+Course diary for *Introduction to Open Data Science* (IODS) at the University of Helsinki, covering data wrangling, regression, logistic regression, clustering, dimensionality reduction and longitudinal data analysis in R.
 
 [My IODS course diary](https://c-riku.github.io/IODS-project/)
